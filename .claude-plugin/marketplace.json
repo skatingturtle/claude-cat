@@ -1,0 +1,14 @@
+{
+  "name": "claude-cat",
+  "owner": {
+    "name": "Ammar Bardesi"
+  },
+  "plugins": [
+    {
+      "name": "claude-cat",
+      "source": "./",
+      "description": "A philosophy-driven plugin that models deliberate, situational intelligence after real cat cognition. Observe first. Choose the mode. Act with intent.",
+      "version": "1.0.0"
+    }
+  ]
+}
