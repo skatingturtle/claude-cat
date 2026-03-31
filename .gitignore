@@ -1,0 +1,5 @@
+node_modules/
+.DS_Store
+
+# Runtime state created during local testing -- not part of the plugin source
+.claude-cat/
