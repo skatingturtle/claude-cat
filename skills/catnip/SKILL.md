@@ -234,3 +234,9 @@ Before starting, read:
 > "Body roll produced a lot but refractory found nothing that survived sober evaluation. The conventional approach remains the best answer. No survivors."
 
 Do not manufacture survivors to seem productive. An honest null result is more useful.
+
+---
+
+## v2 Autonomy Note
+
+Authority tier: confirm-first. In full-cat mode, catnip requires explicit user confirmation. The cat may suggest catnip for creative exploration but will not auto-launch.

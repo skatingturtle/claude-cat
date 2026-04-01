@@ -1,4 +1,5 @@
 {
+  "_v2": "Claude Cat v2 sensory hooks. These are the cat's sensory inputs -- they detect patterns in tool use and feed signals into the cat brain's decision trace. Each hook is auto-tier (fires autonomously in all autonomy modes).",
   "hooks": {
     "SessionStart": [
       {

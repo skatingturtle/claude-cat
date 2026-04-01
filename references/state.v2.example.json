@@ -1,0 +1,73 @@
+{
+  "version": 2,
+  "phase": "stalking",
+  "phaseHistory": ["idle", "scenting", "stalking"],
+  "energy": 72,
+  "threat": {
+    "level": 1,
+    "reason": "unfamiliar territory",
+    "log": [
+      {
+        "time": "2026-04-01T10:00:00Z",
+        "from": 0,
+        "to": 1,
+        "reason": "unfamiliar territory"
+      }
+    ]
+  },
+  "prey": {
+    "size": "bird",
+    "originalSize": "mouse",
+    "reclassified": true
+  },
+  "hunt": {
+    "active": true,
+    "startedAt": "2026-04-01T09:50:00Z",
+    "treatsFile": "litterbox.md"
+  },
+  "autonomy": {
+    "mode": "full-cat",
+    "activeBehavior": "stalk",
+    "pendingBehavior": "pounce",
+    "consentRequired": true,
+    "consentReason": "pounce modifies code",
+    "lastUserDirective": "fix the auth timeout bug"
+  },
+  "stringChase": {
+    "active": false,
+    "label": null,
+    "startedAt": null
+  },
+  "refractoryTimers": {
+    "catnip": null,
+    "zoomies": null
+  },
+  "nineLives": {
+    "total": 9,
+    "used": 2,
+    "checkpoints": [],
+    "preNocturnal": null
+  },
+  "territory": {
+    "currentSession": ["src/auth/login.ts", "src/auth/middleware.ts"]
+  },
+  "decisionTrace": [
+    {
+      "time": "2026-04-01T10:00:00Z",
+      "sensed": {
+        "messageIntent": "bug_fix",
+        "preySize": "bird",
+        "threatLevel": 1,
+        "territory": "unfamiliar",
+        "drift": false,
+        "fatigue": false
+      },
+      "chosenBehavior": "stalk",
+      "authorityTier": "auto",
+      "consentRequested": false,
+      "outcome": "completed",
+      "nextSuggested": "pounce"
+    }
+  ],
+  "lastActivity": "2026-04-01T10:06:00Z"
+}

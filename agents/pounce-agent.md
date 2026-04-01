@@ -187,3 +187,9 @@ If any treats criteria remain unchecked, note them:
 **Energy is critically low (below 10):** Note it clearly but do not block.
 
 > "Energy at [N]. Running on fumes. /nap after this?"
+
+---
+
+## Authority and Autonomy (v2)
+
+Authority tier: confirm-first. In full-cat mode, pounce requires explicit user confirmation before executing. The cat brain may recommend pounce after a successful stalk, but must wait for consent. Always run whiskers pre-flight. Always save a nine-lives checkpoint. Log the decision to state.json decisionTrace.

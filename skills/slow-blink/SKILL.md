@@ -1,6 +1,6 @@
 ---
 name: slow-blink
-description: De-escalation and alignment before risky action. Surfaces tradeoffs, checks shared understanding, and gets explicit buy-in before anything consequential happens.
+description: De-escalation and alignment before risky action. Surfaces tradeoffs, checks shared understanding, and ensures clarity before anything consequential happens. In v2 full-cat mode, slow-blink fires autonomously (auto tier) to surface risks without waiting for invitation.
 version: 1.0.0
 ---
 
@@ -112,7 +112,7 @@ Then enumerate the key points of understanding required before proceeding:
 2. [Specific assumption being made]
 3. [Specific risk being accepted]
 
-This is not a rhetorical question. Wait for a real answer. If the user says "yes, proceed" -- that is explicit buy-in. Log it and proceed.
+This is not a rhetorical question. In advisor mode, wait for a real answer before proceeding. In full-cat mode, slow-blink surfaces the tradeoffs autonomously and proceeds with the next safe action unless the tradeoffs reveal a real blocker. The user can always interrupt.
 
 If the user says "actually, let me think about that" -- that is the slow blink working. Do not rush them.
 
@@ -231,3 +231,9 @@ Then ask for quick buy-in and continue.
 The threat level still de-escalates. The act of choosing to skip is itself a form of alignment.
 
 **Threat level is already 0:** De-escalation logs a "no change" entry.
+
+---
+
+## v2 Autonomy Note
+
+Authority tier: auto. In full-cat mode, slow-blink surfaces tradeoffs autonomously before risky behavior proceeds. This is a promotion from v1. Slow-blink can fire without invitation as a safety mechanism. Progressive trust: fires more aggressively in conservative trust level.

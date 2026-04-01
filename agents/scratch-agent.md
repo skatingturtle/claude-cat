@@ -226,3 +226,9 @@ If the user was mid-hunt:
 If the user was not mid-hunt:
 
 > "Area clean. No active hunt. /treats to start one, or /nap if this was the session's work."
+
+---
+
+## Authority and Autonomy (v2)
+
+Authority tier: announce-and-act (default). Escalates to confirm-first in unfamiliar territory with bird-or-larger prey, or when threat level is 2+. In full-cat mode, scratch announces intent and proceeds in the same turn for low-risk cleanup. Log the decision to state.json decisionTrace.

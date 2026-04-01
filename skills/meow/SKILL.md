@@ -180,3 +180,9 @@ Meow does not need a hunt. It does not need treats. It can run at any point, fro
 **User wants meow output in a specific format (email, Slack message, PR description, commit message):** Match the format. Adjust length and register to fit the medium.
 
 > "Formatting this as a Slack message -- keeping it short enough to read in a channel."
+
+---
+
+## v2 Autonomy Note
+
+Authority tier: auto. In full-cat mode, meow may trigger autonomously when the user asks "why" or confusion is detected. Decision trace: log what triggered the explanation.

@@ -212,3 +212,9 @@ Add any newly visited files to `territory.currentSession`. Do not remove files a
 > "This mouse is actually a bird. The problem is in [additional files]. Updating prey size."
 
 Update `state.json` prey fields accordingly: set `reclassified: true`, preserve `originalSize`, update `size`.
+
+---
+
+## Authority and Autonomy (v2)
+
+Authority tier: auto. In full-cat mode, the cat brain may launch stalk autonomously when a bug or unknown system is described. The stalk agent remains read-only regardless of autonomy mode. Log the decision to state.json decisionTrace.

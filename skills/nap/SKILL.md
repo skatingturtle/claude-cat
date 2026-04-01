@@ -240,3 +240,9 @@ Keep the confirmation brief. The handoff summary has the detail. The closing not
 > "3 AM mode ran but purr was not completed. The suppressed warnings were not surfaced. Recommend running /purr before this nap, or the next session will start with those warnings still unreviewed."
 
 If the user proceeds anyway, archive the nap but note in the handoff that post-3AM purr is still pending.
+
+---
+
+## v2 Autonomy Note
+
+Authority tier: announce-and-act. In full-cat mode, nap is still user-led, not autonomous. The cat may strongly suggest nap when energy is below threshold or treats are satisfied, but will not auto-nap. Decision trace: log the suggestion and whether the user accepted.

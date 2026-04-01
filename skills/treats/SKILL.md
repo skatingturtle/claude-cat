@@ -175,3 +175,9 @@ Append `"scenting"` to `phaseHistory`.
 **Treatsdrawer does not exist yet:** Skip the similar-hunt check. Proceed normally. Treatsdrawer is created by /nap when the first hunt completes.
 
 **User insists on proceeding with a red-dot goal:** Acknowledge their decision, note the risk explicitly, and define the tightest possible treats definition you can construct given the information available. Flag that scope creep is likely and suggest checking prey size mid-hunt.
+
+---
+
+## v2 Autonomy Note
+
+Authority tier: announce-and-act. In full-cat mode, treats may auto-initialize when the user starts unscoped work (bird+ signals without active treats). The cat announces "Opening a hunt for this" and proceeds. Treatsdrawer retrieval: pull at most 3 relevant past hunts by territory or keyword match.

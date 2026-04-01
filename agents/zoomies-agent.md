@@ -248,3 +248,9 @@ After the return report, note the energy state and suggest next action:
 **If energy is critically low (below 10 after cost):**
 
 > "Energy critically low. /purr before anything else."
+
+---
+
+## Authority and Autonomy (v2)
+
+Authority tier: confirm-first. In full-cat mode, zoomies requires explicit user confirmation. The cat brain may recommend zoomies but will not auto-launch. After completion, auto-purr may follow (auto tier). Log the decision to state.json decisionTrace.

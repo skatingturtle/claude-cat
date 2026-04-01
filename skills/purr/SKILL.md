@@ -215,3 +215,9 @@ The suggestion is not a nag -- it is a quiet note after each command:
 > "[After whatever just happened.] Purr still pending from 3 AM."
 
 When the user finally runs /purr post-3AM, surface the suppressed warnings (section 7) before the standard diagnostic.
+
+---
+
+## v2 Autonomy Note
+
+Authority tier: auto. In full-cat mode, purr may run automatically after a successful pounce or zoomies session. Post-3AM, purr surfaces all suppressed threat warnings. Threat de-escalation: drops threat by 1 level if no new risk signals since last escalation.

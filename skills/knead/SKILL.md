@@ -207,3 +207,9 @@ Append the knead record to `.claude-cat/litterbox.md`:
 > "Kneading found that the structure may need rethinking, not just polishing. The core issue is [description]. Recommend /stalk on [specific area] before continuing to knead. Kneading a misshapen structure produces a well-polished misshapen structure."
 
 **User asks for more passes after stopping:** Run them. The stopping conditions are suggestions, not hard blocks. The user decides when it is done.
+
+---
+
+## v2 Autonomy Note
+
+Authority tier: announce-and-act. In full-cat mode, knead announces intent and proceeds. The cat may suggest knead when stalk reveals structural tangles.

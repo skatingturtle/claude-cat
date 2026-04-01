@@ -1,0 +1,15 @@
+{
+  "personality": "playful",
+  "autonomyMode": "full-cat",
+  "energyThresholds": {
+    "nudgeNap": 20
+  },
+  "customHissPatterns": [],
+  "authorityEscalation": {
+    "raiseScratchInSensitiveAreas": true,
+    "raiseWritesAtThreat2": true
+  },
+  "memory": {
+    "treatsdrawerRetrievalLimit": 3
+  }
+}

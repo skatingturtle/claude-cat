@@ -238,3 +238,9 @@ Do not manufacture findings to seem thorough.
 Add to litterbox.md: `Override: user proceeded despite blocker -- [description]`.
 
 **User asks to hiss regularly at a specific pattern:** Direct them to add it to `.claude-cat/config.json` under the `hiss.customPatterns` array.
+
+---
+
+## v2 Autonomy Note
+
+Authority tier: auto. In full-cat mode, hiss fires autonomously whenever scope, safety, or architecture is threatened. This is a promotion from v1 where hiss was manual-only. The dual-mode: slash command /hiss remains available for explicit adversarial review. Autonomous hiss is a warning, not a block.

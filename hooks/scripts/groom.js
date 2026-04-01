@@ -1,4 +1,5 @@
-const { readConfig } = require('./state-utils.js');
+const { readConfig, readState, writeState, stateExists, defaultState } = require('./state-utils.js');
+const { getAutonomyMode, logDecision } = require('./autonomy-utils.js');
 
 function run() {
   let input = '';
@@ -34,6 +35,24 @@ function run() {
 
   const config = readConfig();
   const personality = config.personality || 'playful';
+  const autonomyMode = getAutonomyMode(config);
+
+  // Groom is auto-tier in all modes -- always fires autonomously
+  // In full-cat or graduated mode, log to decisionTrace for transparency
+  if (autonomyMode === 'full-cat' || autonomyMode === 'graduated') {
+    let state = stateExists() ? readState() : defaultState();
+    if (!state) state = defaultState();
+
+    state = logDecision(state, {
+      sensed: { trigger: 'groom', issues },
+      chosenBehavior: 'groom',
+      authorityTier: 'auto',
+      consentRequested: false,
+      outcome: 'fired',
+      nextSuggested: null
+    });
+    writeState(state);
+  }
 
   if (personality === 'minimal') {
     console.log(`[groom] ${issues.join('. ')}.`);

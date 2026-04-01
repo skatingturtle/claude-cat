@@ -1,7 +1,7 @@
 {
   "name": "claude-cat",
-  "version": "1.0.0",
-  "description": "A philosophy-driven plugin that models deliberate, situational intelligence after real cat cognition. Named behaviors give developers a shared vocabulary for approaching different problems.",
+  "version": "2.0.0",
+  "description": "A philosophy-driven plugin that models deliberate, situational intelligence after real cat cognition. v2 promotes the cat brain from advisor to autonomous orchestrator with consent boundaries.",
   "author": {
     "name": "Ammar Bardesi"
   },
@@ -12,7 +12,9 @@
     "cat",
     "cognitive-model",
     "developer-experience",
-    "situational-intelligence"
+    "situational-intelligence",
+    "autonomous-agent",
+    "consent-boundaries"
   ],
   "hooks": "./hooks/hooks.json"
 }

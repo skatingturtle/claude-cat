@@ -322,3 +322,9 @@ Work through them in order of severity.
 **Developer wants to abort the hunt entirely after a belly-rub:** Support it without judgment.
 
 > "Hunt closed. [Brief note on what was attempted and why it was closed.] /nap to archive, or continue with a fresh /treats?"
+
+---
+
+## v2 Autonomy Note
+
+Authority tier: auto (diagnosis) / hard-consent-only (rollback). In full-cat mode, belly-rub diagnosis can fire automatically when repeated failures are detected. Rollback options are always presented for user choice, never executed autonomously.

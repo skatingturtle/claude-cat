@@ -1,6 +1,9 @@
 const {
   readState, writeState, readConfig, stateExists, defaultState, logThreat
 } = require('./state-utils.js');
+const {
+  getAutonomyMode, logDecision, resolveAuthority
+} = require('./autonomy-utils.js');
 
 const DEFAULT_PATTERNS = [
   { pattern: /--force|--hard|push\s+-f/i, reason: 'force push or hard reset detected', level: 2 },
@@ -24,6 +27,7 @@ function run() {
   const content = toolInput.command || toolInput.content || toolInput.file_path || '';
 
   const config = readConfig();
+  const autonomyMode = getAutonomyMode(config);
   const customPatterns = (config.customHissPatterns || []).map(p => ({
     pattern: new RegExp(p, 'i'), reason: `custom pattern matched: ${p}`, level: 2
   }));
@@ -41,11 +45,29 @@ function run() {
 
   if (highest > (state.threat?.level || 0)) {
     state = logThreat(state, highest, reasons);
-    writeState(state);
   }
 
+  // Hiss is authority-tier: auto in all modes -- it always fires autonomously
+  // In full-cat or graduated mode, log to decisionTrace for transparency
+  if (autonomyMode === 'full-cat' || autonomyMode === 'graduated') {
+    const authority = resolveAuthority('hiss', state, config);
+    state = logDecision(state, {
+      sensed: { trigger: 'hiss-guard', threatLevel: highest, reasons },
+      chosenBehavior: 'hiss',
+      authorityTier: authority.tier,
+      consentRequested: false,
+      outcome: 'fired',
+      nextSuggested: highest >= 2 ? 'slow-blink' : null
+    });
+  }
+
+  writeState(state);
+
   const warnings = matches.map(m => `  - ${m.reason}`).join('\n');
-  console.log(`[hiss] Threat level ${highest} detected:\n${warnings}`);
+  const escalation = highest >= 2
+    ? '\n  Escalation: threat level 2+ -- consider /slow-blink before proceeding.'
+    : '';
+  console.log(`[hiss] Threat level ${highest} detected:\n${warnings}${escalation}`);
 }
 
 run();

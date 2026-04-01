@@ -8,6 +8,49 @@ The model is drawn from real cat cognition. Cats do not operate in one register.
 
 ---
 
+## v2: Approach C (Full Cat Mode)
+
+v2 promotes the cat brain from a passive advisor to an autonomous orchestrator. In **full-cat mode**, the cat owns the hunt loop: it reads your messages, classifies the task, selects the right behavior, and acts or asks depending on the risk level.
+
+Three autonomy modes are available:
+
+| Mode | Behavior |
+|------|----------|
+| **advisor** | v1 behavior. The cat suggests, you decide. Every transition is a recommendation. |
+| **graduated** | Safe behaviors run automatically. Moderate ones announce then proceed. Risky ones ask first. |
+| **full-cat** | The cat orchestrates the entire hunt. Safe actions happen autonomously. Code changes always require your consent. |
+
+**Existing v1 users** default to `advisor` mode on upgrade. Change it in `.claude-cat/config.json`:
+
+```json
+{
+  "personality": "playful",
+  "autonomyMode": "full-cat"
+}
+```
+
+### What Full Cat Means
+
+- The cat brain reads every message and decides which behavior fits.
+- Read-only, diagnostic, and protective actions (stalk, meow, purr, hiss, slow-blink) happen without asking.
+- Moderate actions (treats, knead, scratch) announce intent and proceed.
+- Code-modifying actions (pounce, zoomies, catnip) always require your explicit confirmation.
+- Nuclear options (3 AM, rollback) are never autonomous.
+- You can always interrupt. Any message, slash command, or "stop" / "hold" / "just review" overrides the cat.
+
+### Authority Tiers
+
+| Tier | Behaviors | What Happens |
+|------|-----------|--------------|
+| Auto | stalk, meow, purr, groom, hiss, slow-blink | Cat acts without asking |
+| Announce-and-act | treats, knead, scratch, nap | Cat announces intent, proceeds in same turn |
+| Confirm-first | pounce, zoomies, catnip | Cat recommends, waits for your OK |
+| Hard-consent-only | 3 AM, belly-rub rollback | You must invoke the command yourself |
+
+Context can raise a tier: threat level 2+ raises write-capable actions, unfamiliar territory raises scratch for large prey, and destructive side effects always require hard consent.
+
+---
+
 ## Core Philosophy
 
 Seven beliefs underpin every behavior in this plugin:
@@ -87,16 +130,28 @@ Checkpoint and handoff for the next session. Summarizes what was done, what is i
 
 ---
 
-## Personality Configuration
+## Configuration
 
-Claude Cat adjusts how much of the cat metaphor it surfaces. Three levels are available:
+Claude Cat stores its configuration and runtime state in `.claude-cat/` at your project root. This directory is excluded from version control by default.
 
 ```json
 // .claude-cat/config.json
 {
-  "personality": "playful"
+  "personality": "playful",
+  "autonomyMode": "full-cat",
+  "energyThresholds": { "nudgeNap": 20 },
+  "customHissPatterns": [],
+  "authorityEscalation": {
+    "raiseScratchInSensitiveAreas": true,
+    "raiseWritesAtThreat2": true
+  },
+  "memory": {
+    "treatsdrawerRetrievalLimit": 3
+  }
 }
 ```
+
+### Personality
 
 | Level | Behavior |
 |-------|----------|
@@ -104,7 +159,13 @@ Claude Cat adjusts how much of the cat metaphor it surfaces. Three levels are av
 | `playful` | Light cat framing in section headers and transitions. Default. |
 | `full-cat` | Full persona. Claude responds as a cat would narrate its own behavior. |
 
-The config file is created at `.claude-cat/config.json` in your project root on first use. It is excluded from version control by default.
+### Autonomy Mode
+
+| Mode | Behavior |
+|------|----------|
+| `advisor` | Suggest only. v1 compatibility mode. |
+| `graduated` | Auto-tier runs. Announce-and-act announces. Confirm-first waits. |
+| `full-cat` | Full orchestration with consent boundaries. |
 
 ---
 
@@ -120,18 +181,35 @@ These run automatically based on context. You do not invoke them directly.
 
 **Belly rub trigger** activates when Claude encounters a test failure or unhandled exception during a task. It switches to recovery mode and routes through honest diagnosis before attempting a fix.
 
+In v2, these hooks also feed into the cat brain's decision trace, building an audit log of why the cat chose what it chose.
+
 ---
 
 ## The Cognitive Kernel
 
-The `cat-brain` skill is the underlying model that all commands draw from. It encodes the behavioral logic: when to act, when to wait, when to push back, and when to hand off. It is modeled on published research in cat ethology and cognitive behavioral science -- specifically the way cats modulate attention, threat response, and energy allocation across different environmental contexts.
+The `cat-brain` skill is the underlying model that all commands draw from. It encodes the behavioral logic: when to act, when to wait, when to push back, and when to hand off. It is modeled on published research in cat ethology and cognitive behavioral science.
 
-You do not invoke cat-brain directly. It runs underneath every command.
+In v2, the cat brain is promoted from a passive advisor to an autonomous orchestrator. It runs the core loop on every turn: sense, classify, decide, select behavior, check authority, execute or ask, evaluate and chain.
+
+You do not invoke cat-brain directly. It runs underneath every command and, in full-cat mode, underneath every turn.
 
 See the full design spec for details.
 
 ---
 
+## Upgrading from v1
+
+v2 is backward compatible with v1. Existing `.claude-cat/` directories are automatically migrated:
+
+- `state.json` gains new fields (`autonomy`, `stringChase`, `decisionTrace`) with safe defaults.
+- `config.json` gains `autonomyMode` (defaults to `advisor` for existing users).
+- All slash commands continue to work exactly as before in advisor mode.
+- No data is lost. No formats break.
+
+To enable v2 features, set `autonomyMode` to `graduated` or `full-cat` in your config.
+
+---
+
 ## License
 
-MIT. Built by Ammar Bardesi.
+MIT. Built by Ammar Bardesi. v2 architecture designed in collaboration with Claude (Anthropic) and Codex (OpenAI).
